@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>FTA Troop Calculator</title>
+  <link rel="stylesheet" href="styles/guide.css" type="text/css">
+  
+  <style>fieldset { margin-top: 1em;
+  }
+   label { 
+     display: inline-block; width: 8em; text-align: left; 
+    }
+    input { 
+      font-size: .8em; text-align: left; display: inline-block; width: 8em;
+    }
+     output::before {  
+       content: ''; 
+      }
+      output { 
+        font-weight: bold; width: 16em; border-bottom: 1px solid lightgrey; display: block; margin: .8em; float: right; text-align: right;
+      }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="header">
+      <p><b>Troop Calculator</b></p>
+    </div>
+      
+    <div class="container">
+      <p>Work out your correct troop formations for different events.</p>
+    </div>
+  </div></br>
+
+  <div class="card">
+    <div class="container">  
+      <form action="" id="march">
+        <fieldset>
+          <legend><b>Amount of march troops :</b></legend>
+          <label><input type="number" class="amount" step=any min=0></label> 
+        </fieldset>
+      </form>
+    </div>
+  </div></br>
+  <div class="card">
+    <div class="container">  
+      <p><b>SHOWDOWN</b></p>
+      <form action="" id="showdown">
+        <fieldset><br>
+          <legend>Infantry (65%) :</legend>
+          <output name="ShowdownInfantry" value='0'></output>
+          <br><br>
+        </fieldset>
+        <fieldset><br>
+          <legend>Riders (12%) :</legend>
+          <output name="ShowdownRiders" value='0'></output>
+          <br><br>
+        </fieldset>
+        <fieldset><br>
+          <legend>Hunters (23%) :</legend>
+          <output name="ShowdownHunters" value='0'></output>
+          <br><br>
+        </fieldset>
+      </form>
+    </div>
+  </div></br>
+
+
+  <div class="card">
+    <div class="container">  
+      <p><b>TRAP</b></p>
+      <form action="" id="trap">
+        <fieldset><br>
+          <legend>Infantry (10%) :</legend>
+          <output name="TrapInfantry" value='0'></output>
+          <br><br>
+        </fieldset>
+        <fieldset><br>
+          <legend>Riders (30%) :</legend>
+          <output name="TrapRiders" value='0'></output>
+          <br><br>
+        </fieldset>
+        <fieldset><br>
+          <legend>Hunters (60%) :</legend>
+          <output name="TrapHunters" value='0'></output>
+          <br><br>
+        </fieldset>
+      </form>
+    </div>
+  </div></br>
+
+  <p>&nbsp;</p>
+
+  <script>
+    const myForm = document.getElementById('march');
+    const percent = document.querySelector('[name="percent"]');
+    const amount = document.querySelector('.amount');
+    const ShowdownInfantry = document.querySelector('[name="ShowdownInfantry"]');
+    const ShowdownRiders = document.querySelector('[name="ShowdownRiders"]');
+    const ShowdownHunters = document.querySelector('[name="ShowdownHunters"]');
+    const TrapInfantry = document.querySelector('[name="TrapInfantry"]');
+    const TrapRiders = document.querySelector('[name="TrapRiders"]');
+    const TrapHunters = document.querySelector('[name="TrapHunters"]');
+    
+    function percentageCalculator() { 
+      ShowdownInfantry.value = ((65 * amount.value) / 100).toFixed(0)
+      ShowdownRiders.value = ((12 * amount.value) / 100).toFixed(0)
+      ShowdownHunters.value = ((23 * amount.value) / 100).toFixed(0)
+      TrapInfantry.value = ((10 * amount.value) / 100).toFixed(0)
+      TrapRiders.value = ((30 * amount.value) / 100).toFixed(0)
+      TrapHunters.value = ((60 * amount.value) / 100).toFixed(0)
+    }
+    
+    myForm.addEventListener('submit', e=>e.preventDefault())
+    myForm.addEventListener('input', percentageCalculator)
+  </script>
+
+</body>
+</html>
